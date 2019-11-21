@@ -8,9 +8,27 @@ $height: 240px;
   align-items: center;
   justify-content: center;
   margin: 0 7.5px 15px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  overflow: hidden;
+
+  .background-image {
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &:hover {
+    .content {
+      cursor: pointer;
+      background: rgba(#ffffff, 0.95);
+    }
+
+    .background-image {
+      transition: transform 3s cubic-bezier(0.25, 0.45, 0.45, 0.95);
+      transform: scale(1.1);
+      overflow: hidden;
+    }
+  }
 
   @media only screen and (min-width: 768px) {
     height: $height * 1.1;
@@ -48,10 +66,14 @@ $height: 240px;
     align-items: center;
     justify-content: center;
     border: 1px solid black;
+    background: rgba(#fff, 0.7);
+    font-family: 'Open Sans Condensed';
+    text-transform: uppercase;
+    position: absolute;
 
     .title {
       font-weight: bold;
-      margin-bottom: 6px;
+      margin: 0 6px 0;
       font-size: 22px;
       color: #4a4a4a;
     }
