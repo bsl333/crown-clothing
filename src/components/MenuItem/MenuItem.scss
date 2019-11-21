@@ -1,0 +1,64 @@
+$height: 240px;
+.menu-item {
+  min-width: 30%;
+  height: $height;
+  flex: 1 1 auto;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 7.5px 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  @media only screen and (min-width: 768px) {
+    height: $height * 1.1;
+    &.large {
+      height: $height * 1.4;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    height: $height * 1.1;
+    &.large {
+      height: $height * 1.7;
+    }
+  }
+
+  @media only screen and (min-width: 1800px) {
+    height: $height * 1.3;
+    &.large {
+      height: $height * 2;
+    }
+  }
+
+  &:first-child {
+    margin-right: 7.5px;
+  }
+
+  &:last-child {
+    margin-left: 7.5px;
+  }
+
+  .content {
+    height: 90px;
+    padding: 0 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+
+    .title {
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 22px;
+      color: #4a4a4a;
+    }
+
+    .subtitle {
+      font-weight: lighter;
+      font-size: 16px;
+    }
+  }
+}
