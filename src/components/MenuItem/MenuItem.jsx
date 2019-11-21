@@ -1,11 +1,18 @@
 import React from 'react';
+// allows us to avoid prop drilling (sending props thru multiple children) and have access to history prop
+import { withRouter } from 'react-router-dom';
 
 import './MenuItem.scss';
 
-export default function MenuItem({ title, imageUrl, size }) {
+function MenuItem({ title, imageUrl, size, match, history }) {
   const menuItemClass = size ? `${size} menu-item` : 'menu-item';
+  console.log(match);
+  console.log(history);
   return (
-    <div className={menuItemClass}>
+    <div
+      className={menuItemClass}
+      onClick={() => history.push(`${match.url}${title}`)}
+    >
       <div
         className="background-image"
         style={{ backgroundImage: `url(${imageUrl})` }}
@@ -17,3 +24,5 @@ export default function MenuItem({ title, imageUrl, size }) {
     </div>
   );
 }
+
+export default withRouter(MenuItem);

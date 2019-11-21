@@ -9,7 +9,9 @@ export default class Directory extends React.Component {
     sections
   };
 
-  renderSections = section => <MenuItem key={section.id} {...section} />;
+  renderSections = ({ id, ...sectionProps }) => {
+    return <MenuItem key={id} {...sectionProps} />;
+  };
 
   render() {
     return (
