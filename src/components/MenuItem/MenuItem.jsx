@@ -6,18 +6,16 @@ import './MenuItem.scss';
 
 function MenuItem({ title, imageUrl, size, match, history }) {
   const menuItemClass = size ? `${size} menu-item` : 'menu-item';
-  console.log(match);
-  console.log(history);
   return (
-    <div
-      className={menuItemClass}
-      onClick={() => history.push(`${match.url}${title}`)}
-    >
+    <div className={menuItemClass}>
       <div
         className="background-image"
         style={{ backgroundImage: `url(${imageUrl})` }}
       ></div>
-      <div className="content">
+      <div
+        className="content"
+        onClick={() => history.push(`${match.url}${title}`)}
+      >
         <h1 className="title">{title}</h1>
         <span className="subtitle">Shop now</span>
       </div>
