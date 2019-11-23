@@ -6,6 +6,7 @@ import ShopPage from './pages/ShopPage/ShopPage';
 
 import './App.scss';
 import Header from './components/Header/Header';
+import SignInRegisterPage from './pages/SignInRegisterPage/SignInRegisterPage';
 
 export default function App() {
   return (
@@ -13,6 +14,7 @@ export default function App() {
       <Header />
       <Route exact path="/" component={HomePage}></Route>
       <Route exact path="/shop" component={ShopPage}></Route>
+      <Route exact path="/signin" component={SignInRegisterPage} />
     </div>
   );
 }
