@@ -2,13 +2,10 @@ import React from 'react';
 
 import './FormInput.scss';
 
-const renderLabel = (name, value) => {
+const renderLabel = (label, value) => {
   return (
-    <label
-      htmlFor={name}
-      className={`${value.length ? 'shrink' : ''} form-input-label`}
-    >
-      {name}
+    <label className={`${value.length ? 'shrink' : ''} form-input-label`}>
+      {label}
     </label>
   );
 };
@@ -17,7 +14,7 @@ export default function FormInput({ handleChange, label, ...props }) {
   return (
     <div className="group">
       <input className="form-input" onChange={handleChange} {...props} />
-      {label ? renderLabel(props.name, props.value) : null}
+      {label ? renderLabel(label, props.value) : null}
     </div>
   );
 }

@@ -26,10 +26,12 @@ export default firebase;
  * @param {Object} additionalData
  * @returns {firebase.firestore.DocumentReference} firebase doc ref
  */
-export const createUserProfileDoc = async (authObj, additionalData) => {
+export const createUserProfileDocument = async (authObj, additionalData) => {
   if (!authObj) return;
 
-  const userRef = firestore.collection('users').doc(authObj.uid);
+  const userRef = authObj.uid
+    ? firestore.collection('users').doc(authObj.uid)
+    : firestore.collection('users').doc();
   const user = await userRef.get();
   if (!user.exists) {
     const { email, displayName } = authObj;
@@ -38,7 +40,8 @@ export const createUserProfileDoc = async (authObj, additionalData) => {
       await userRef.set({
         email,
         displayName,
-        createdAt
+        createdAt,
+        ...additionalData
       });
     } catch (e) {
       console.error(e);

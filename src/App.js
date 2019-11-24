@@ -7,7 +7,7 @@ import ShopPage from './pages/ShopPage/ShopPage';
 import './App.scss';
 import Header from './components/Header/Header';
 import SignInRegisterPage from './pages/SignInRegisterPage/SignInRegisterPage';
-import { createUserProfileDoc } from './firebase/firebaseUtils';
+import { createUserProfileDocument } from './firebase/firebaseUtils';
 
 import { auth } from './firebase/firebaseUtils';
 
@@ -33,7 +33,7 @@ export default class App extends React.Component {
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         try {
-          const userRef = await createUserProfileDoc(userAuth);
+          const userRef = await createUserProfileDocument(userAuth);
           userRef.onSnapshot(this.setCurrentUser);
         } catch (error) {
           console.error(error);
