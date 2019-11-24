@@ -20,7 +20,7 @@ export default class App extends React.Component {
 
   setCurrentUser = userSnapShot => {
     const currentUser = {
-      id: userSnapShot,
+      id: userSnapShot.id,
       ...userSnapShot.data()
     };
     this.setState({

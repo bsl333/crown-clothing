@@ -4,7 +4,7 @@ import CustomButton from '../CustomButton/CustomButton';
 
 import './SignIn.scss';
 
-import { signInWithGoogle } from '../../firebase/firebaseUtils';
+import { auth, signInWithGoogle } from '../../firebase/firebaseUtils';
 
 const EMAIL = 'email';
 const PASSWORD = 'password';
@@ -15,12 +15,19 @@ export default class SignIn extends Component {
     password: ''
   };
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    this.setState({
-      email: '',
-      password: ''
-    });
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      this.setState({
+        email: '',
+        password: ''
+      });
+    } catch (error) {
+      alert('invalid sign in');
+    }
   };
 
   handleChange = e => {
@@ -32,7 +39,7 @@ export default class SignIn extends Component {
   render() {
     return (
       <div className="sign-in-container">
-        <h2>I already have an account</h2>
+        <h2 className="title">I already have an account</h2>
         <span>Sign in with your email and password</span>
         <form onSubmit={this.handleSubmit}>
           <FormInput
