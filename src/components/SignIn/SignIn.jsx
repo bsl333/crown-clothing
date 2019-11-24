@@ -45,6 +45,7 @@ export default class SignIn extends Component {
             handleChange={this.handleChange}
           />
           <FormInput
+            autoComplete="current-user"
             type={PASSWORD}
             name={PASSWORD}
             id={PASSWORD}
@@ -55,8 +56,8 @@ export default class SignIn extends Component {
           />
           <div className="buttons">
             <CustomButton type="submit">Sign In</CustomButton>
-            <CustomButton onClick={signInWithGoogle}>
-              Sign in google
+            <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
+              Sign in with google
             </CustomButton>
           </div>
         </form>

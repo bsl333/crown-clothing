@@ -16,12 +16,7 @@ const renderLabel = (name, value) => {
 export default function FormInput({ handleChange, label, ...props }) {
   return (
     <div className="group">
-      <input
-        className="form-input"
-        // htmlFor={props.name}
-        onChange={handleChange}
-        {...props}
-      />
+      <input className="form-input" onChange={handleChange} {...props} />
       {label ? renderLabel(props.name, props.value) : null}
     </div>
   );
