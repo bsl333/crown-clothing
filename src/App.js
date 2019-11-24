@@ -7,6 +7,7 @@ import ShopPage from './pages/ShopPage/ShopPage';
 import './App.scss';
 import Header from './components/Header/Header';
 import SignInRegisterPage from './pages/SignInRegisterPage/SignInRegisterPage';
+import { createUserProfileDoc } from './firebase/firebaseUtils';
 
 import { auth } from './firebase/firebaseUtils';
 
@@ -17,11 +18,32 @@ export default class App extends React.Component {
 
   unsubscribeFromAuth = null;
 
+  setCurrentUser = userSnapShot => {
+    const currentUser = {
+      id: userSnapShot,
+      ...userSnapShot.data()
+    };
+    this.setState({
+      currentUser
+    });
+  };
+
   componentDidMount() {
     // onAuthStateChanged returns a function to unsubscribe from onAuthStateChanged observer
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(user =>
-      this.setState({ currentUser: user })
-    );
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        try {
+          const userRef = await createUserProfileDoc(userAuth);
+          userRef.onSnapshot(this.setCurrentUser);
+        } catch (error) {
+          console.error(error);
+        }
+      } else {
+        this.setState({
+          currentUser: userAuth
+        });
+      }
+    });
   }
 
   componentWillUnmount() {
