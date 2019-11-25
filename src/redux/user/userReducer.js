@@ -1,7 +1,7 @@
 import { SET_CURRENT_USER } from './types';
 
 const INITIAL_STATE = {
-  currentUser: null
+  currentUser: undefined
 };
 
 export default (state = INITIAL_STATE, action) => {
