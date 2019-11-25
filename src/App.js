@@ -47,6 +47,7 @@ class App extends React.Component {
     if (this.props.currentUser === undefined) {
       return (
         <div className="loader">
+          <span className="loader-text">loading...</span>
           <Loader
             type="Oval"
             color="#00BFFF"
