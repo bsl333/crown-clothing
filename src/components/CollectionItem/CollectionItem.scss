@@ -5,12 +5,30 @@
   height: 350px;
 
   .image {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 12px;
     width: 100%;
     min-width: 100px;
     height: 95%;
     background-size: cover;
     background-position: center;
     margin-bottom: 5px;
+  }
+
+  .custom-button {
+    display: none;
+  }
+
+  &:hover {
+    .image {
+      opacity: 0.85;
+    }
+    .custom-button {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .collection-footer {
