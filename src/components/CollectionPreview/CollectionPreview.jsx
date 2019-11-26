@@ -3,15 +3,13 @@ import CollectionItem from '../CollectionItem/CollectionItem';
 
 import './CollectionPreview.scss';
 
-const renderCard = ({ id, ...collectionItemProps }) => (
-  <CollectionItem key={id} {...collectionItemProps} />
-);
+const renderCards = item => <CollectionItem key={item.id} item={item} />;
 
 function CollectionPreview({ title, items }) {
   return (
     <div className="collection-preview">
       <h1 className="title">{title.toUpperCase()}</h1>
-      <div className="preview">{items.slice(0, 4).map(renderCard)}</div>
+      <div className="preview">{items.slice(0, 4).map(renderCards)}</div>
     </div>
   );
 }
