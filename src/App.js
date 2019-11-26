@@ -5,8 +5,10 @@ import { createStructuredSelector } from 'reselect';
 
 import HomePage from './pages/HomePage/HomePage';
 import ShopPage from './pages/ShopPage/ShopPage';
-import Header from './components/Header/Header';
 import SignInRegisterPage from './pages/SignInRegisterPage/SignInRegisterPage';
+import CheckoutPage from './pages/CheckoutPage/CheckoutPage';
+
+import Header from './components/Header/Header';
 import Loader from 'react-loader-spinner';
 
 import { createUserProfileDocument } from './firebase/firebaseUtils';
@@ -65,8 +67,8 @@ class App extends React.Component {
     return (
       <div className="container">
         <Header />
-        <Route exact path="/" component={HomePage}></Route>
-        <Route exact path="/shop" component={ShopPage}></Route>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/shop" component={ShopPage} />
         <Route
           exact
           path="/signin"
@@ -78,6 +80,7 @@ class App extends React.Component {
             );
           }}
         />
+        <Route exact path="/checkout" component={CheckoutPage} />
       </div>
     );
   }
