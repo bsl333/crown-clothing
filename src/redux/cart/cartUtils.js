@@ -11,3 +11,22 @@ export const addItemToCart = (existingCartItems, newItem) => {
   }
   return [...existingCartItems, { ...newItem, quantity: 1 }];
 };
+
+/**
+ *
+ * @param {[]cartItems]} existingCartItems
+ * @param {[]} itemToRemove
+ */
+export const removeItemFromCart = (existingCartItems, itemToRemove) => {
+  return existingCartItems.reduce((acc, item) => {
+    if (item.id === itemToRemove.id) {
+      if (item.quantity > 1) {
+        item.quantity--;
+      } else {
+        return acc;
+      }
+    }
+    acc.push({ ...item });
+    return acc;
+  }, []);
+};

@@ -1,4 +1,9 @@
-import { TOGGLE_CART_DROPDOWN, ADD_ITEM_TO_CART } from './types';
+import {
+  TOGGLE_CART_DROPDOWN,
+  ADD_ITEM_TO_CART,
+  REMOVE_ITEM_FROM_CART,
+  CLEAR_ITEM_FROM_CART
+} from './types';
 
 export const toggleCartDropdown = () => {
   return {
@@ -9,6 +14,20 @@ export const toggleCartDropdown = () => {
 export const addItemToCart = item => {
   return {
     type: ADD_ITEM_TO_CART,
+    payload: item
+  };
+};
+
+export const removeItemFromCart = item => {
+  return {
+    type: REMOVE_ITEM_FROM_CART,
+    payload: item
+  };
+};
+
+export const clearItemFromCart = item => {
+  return {
+    type: CLEAR_ITEM_FROM_CART,
     payload: item
   };
 };
