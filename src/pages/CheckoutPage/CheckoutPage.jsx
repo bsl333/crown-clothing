@@ -9,6 +9,7 @@ import {
 
 import './CheckoutPage.scss';
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
+import StripeCheckoutButton from '../../components/StripeButton/StripeButton';
 
 const headers = ['Product', 'Description', 'Quantity', 'Price', 'Remove'];
 const renderHeader = () => {
@@ -29,6 +30,13 @@ function CheckoutPage({ cartItems, cartTotalCost }) {
         ))}
       </div>
       <div className="total-cost">TOTAL: ${cartTotalCost}</div>
+      <div className="warning-text">
+        *test credit card info for testing*
+        <br />
+        card # 4242 4242 4242 4242 exp: 1/20 cv 123
+        <br />
+      </div>
+      <StripeCheckoutButton price={cartTotalCost} />
     </div>
   );
 }
