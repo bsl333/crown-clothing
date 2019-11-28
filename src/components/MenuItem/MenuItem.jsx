@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 import './MenuItem.scss';
 
-function MenuItem({ title, imageUrl, size, match, history }) {
+function MenuItem({ title, imageUrl, size, match, history, linkUrl }) {
   const menuItemClass = size ? `${size} menu-item` : 'menu-item';
   return (
     <div className={menuItemClass}>
@@ -14,7 +14,7 @@ function MenuItem({ title, imageUrl, size, match, history }) {
       ></div>
       <div
         className="content"
-        onClick={() => history.push(`${match.url}${title}`)}
+        onClick={() => history.push(`${match.url}${linkUrl}`)}
       >
         <h1 className="title">{title}</h1>
         <span className="subtitle">Shop now</span>
