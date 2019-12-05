@@ -12,34 +12,32 @@ import { auth } from '../../firebase/firebaseUtils';
 import { selectCurrentUser } from '../../redux/user/userSelectors';
 import { selectShowCartDropdown } from '../../redux/cart/cartSelectors';
 
-import './Header.scss';
+import {
+  HeaderContainer,
+  LogoContainer,
+  OptionsContainer,
+  OptionLink,
+  OptionDiv
+} from './Header.style';
 
 function Header({ currentUser, showCartDropdown }) {
   return (
-    <header className="header-container">
-      <Link to="/" className="logo-container">
-        <Logo className="logo" />
-      </Link>
-      <div className="options">
-        <Link className="option" to="/shop">
-          SHOP
-        </Link>
-        <Link className="option" to="/shop">
-          CONTACT
-        </Link>
+    <HeaderContainer>
+      <LogoContainer to="/">
+        <Logo />
+      </LogoContainer>
+      <OptionsContainer>
+        <OptionLink>SHOP</OptionLink>
+        <OptionLink>CONTACT</OptionLink>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
-            SIGN OUT
-          </div>
+          <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
         ) : (
-          <Link className="option" to="/signin">
-            SIGN IN
-          </Link>
+          <OptionLink to="/signin">SIGN IN</OptionLink>
         )}
         <CartIcon />
-      </div>
+      </OptionsContainer>
       {showCartDropdown && <CartDropdown />}
-    </header>
+    </HeaderContainer>
   );
 }
 
