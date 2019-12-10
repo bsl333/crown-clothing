@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -27,8 +26,8 @@ function Header({ currentUser, showCartDropdown }) {
         <Logo />
       </LogoContainer>
       <OptionsContainer>
-        <OptionLink>SHOP</OptionLink>
-        <OptionLink>CONTACT</OptionLink>
+        <OptionLink to="/shop">SHOP</OptionLink>
+        <OptionLink to="/contact">CONTACT</OptionLink>
         {currentUser ? (
           <OptionDiv onClick={() => auth.signOut()}>SIGN OUT</OptionDiv>
         ) : (
